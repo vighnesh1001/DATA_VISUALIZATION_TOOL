@@ -26,12 +26,11 @@ Complete login and signup page using node.js , express.js and Mongoodb.
 
 <br>
 <br>
+<br> 
 <br>
 <br>
 <br>
 <br>
 <br>
-<br>
-<img src=https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2szemRnZ3Z4OGlkc2w4amRsdHZrMWNqd2dqYWd1ZWcyaDNzcmxkbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h8RDGogSns9wpOJFzR/giphy.webp/>
-
+<iframe src="https://giphy.com/embed/h8RDGogSns9wpOJFzR" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/h8RDGogSns9wpOJFzR">via GIPHY</a></p>
 
