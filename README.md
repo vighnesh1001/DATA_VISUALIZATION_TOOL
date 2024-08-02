@@ -9,7 +9,7 @@ It takes input data from the user and gives the visual representation of the dat
 We are using python.Libraries like numpy,pandas,matplotlib and scikit learn is used .We are making it as a web application for getting more users and making userfriendly.MERN stack is used as our stack.
 
 # OUR GOAL
-To finish the application and give a versetile application to analyse data.We eill be learning different concepts of AI and the AI workflow.We will be getting good at making a web application and REST api development .
+By completing  the application and give a versetile application to analyse data.We will be learning different concepts of AI and the AI workflow.We will be getting good at making a web application along with REST api development .
 
 # OUR MENTOR
 @madan2248c
