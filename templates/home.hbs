@@ -4,34 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSV Upload without Form</title>
 </head>
 
 <body>
-    <h2>home</h2>
-    <h2>welcome </h2>
+    <h2>Home</h2>
+    <h2>Welcome</h2>
 
-
-    <form id="upload_form" enctype="multipart/form-data" name="upload_form">
-        <div>
-            <label>Select file to upload</label>
-            <input type="file" id="csvfile" name="csvfile" accept=".csv" required>
-        </div>
-        <br>
-        <button type="submit">Upload</button>
-    </form>
+    <div>
+        <label>Select file to upload:</label>
+        <input type="file" id="csvfile" name="csvfile" accept=".csv" required>
+    </div>
+    <br>
+    <button id="uploadBtn">Upload</button>
 
     <hr>
 
     <ul id="columnnames"></ul>
 
+    <script>
+        const uploadBtn = document.getElementById("uploadBtn");
+        const csvFileInput = document.getElementById("csvfile");
+        const columnList = document.getElementById("columnnames");
+
+        uploadBtn.addEventListener("click", async () => {
+            const csvFile = csvFileInput.files[0];
+
+            if (!csvFile) {
+                alert("Please select a CSV file to upload.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("csvfile", csvFile);
+            console.log(formData);
+
+            try {
+                const response = await fetch("/parser/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+
+                const result = await response.json();
 
 
 
+                // Clear the previous list
+                columnList.innerHTML = '';
+
+                console.log(result);
 
 
-    <script src="app.js"></script>
+                // Append new column names
+                result.columns.forEach(column => {
+                    const li = document.createElement("li");
+                    li.textContent = column;
+                    columnList.appendChild(li);
+                });
 
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
 </body>
 
 </html>

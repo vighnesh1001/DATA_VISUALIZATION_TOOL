@@ -6,7 +6,7 @@ const csv = require('csv-parser')
 const fs = require('fs');
 const mongoose = require("mongoose")
 
-const parser1 = require("./parser")
+const parser = require("./parser.js")
 
 const hbs = require("hbs");
 const { collection1 } = require("./mongodb");
@@ -17,16 +17,19 @@ const templatepath = path.join(__dirname, "../templates");
 app.use(express.json());
 app.set("view engine", "hbs");
 app.set("views", templatepath);
-app.use(express.urlencoded({ extended: false }));
-app.use("/", parser1)
+app.use(express.urlencoded({ extended: true }));
+app.use("/parser", parser)
 
-app.get("/", (req, res) => {
+app.get("/login", (req, res) => {
     res.render("login");
 });
+
 app.get("/signup", (req, res) => {
     res.render("signup");
 });
-
+app.get("/", async (req, res) => {
+    res.render("home");
+})
 app.post("/signup", async (req, res) => {
     const data = {
         name: req.body.name,
@@ -53,7 +56,7 @@ app.post("/login", async (req, res) => {
     try {
         const check = await collection1.findOne({ name: req.body.name });
         if (check.password === req.body.password) {
-            res.render("home");
+            res.redirect("/");
         }
         else {
             res.send("wrong password");
